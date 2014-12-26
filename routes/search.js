@@ -14,6 +14,6 @@ module.exports = function(req, res){
 
 	request(url.format(options), function(err, resp, body){
 		sumData = JSON.parse(body);
-		res.json(sumData);
+		res.render('search', {title: 'Search Results', sumData: sumData[sumNameFixed]});
 	});
 };	

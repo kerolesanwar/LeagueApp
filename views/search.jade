@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  table
+   tr
+    th
+    th Name
+    th Level
+    th ID
+   tr
+    td
+     img(src="/dragontail/4.21.5/img/profileicon/" + sumData.profileIconId + ".png" width="50%")
+    td=sumData.name
+    td=sumData.summonerLevel
+    td=sumData.id
+
