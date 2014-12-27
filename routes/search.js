@@ -14,6 +14,9 @@ module.exports = function(req, res){
 
 	request(url.format(options), function(err, resp, body){
 		sumData = JSON.parse(body);
+		sumId=sumData[sumNameFixed].id;
+		exports.sumId = sumId;
+		exports.options = options;
 		res.render('search', {title: 'Search Results', sumData: sumData[sumNameFixed]});
 	});
 };	
