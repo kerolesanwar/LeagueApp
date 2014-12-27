@@ -24,6 +24,9 @@ module.exports = function(req, res){
 
 			
 		}
+		/*Sorting By Most Played
+			Messy, fix Later
+		*/
 		var arr=[];
 		Object.keys(championsPlayed.champions).sort(function(x, y){
 			return championsPlayed.champions[y].stats.totalSessionsPlayed -
@@ -31,7 +34,7 @@ module.exports = function(req, res){
 		}).forEach(function(key){
 			arr.push(championsPlayed.champions[key]);
 		})
-		console.log(arr);
+
 		res.render('champions', {title: 'Champions Played', champs:arr});
 
 	});

@@ -4,6 +4,7 @@ block content
   h1= title
   table.table-bordered.table-striped
    tr
+    th 
     th Champion
     th Games Played
     th Wins
@@ -12,6 +13,8 @@ block content
    each champ in champs
     if(champ.id!=0)
      tr
+      td(width="10%")
+       img(src="/dragontail/4.21.5/img/champion/" + champ.stats.image.full width="100%")
       td=champ.stats.name
       td=champ.stats.totalSessionsPlayed
       td=champ.stats.totalSessionsWon
