@@ -13,7 +13,6 @@ module.exports = function(req, res){
 
 	request(url.format(options), function(err, resp, body){
 		championsPlayed = JSON.parse(body); //Ranked Statistics by Champion (Wins, kills, Damage Dealt, etc)
-		console.log(championsPlayed);
 		for(champId in championsPlayed.champions){ //User's stats with each champion
 			for(champ in championList.data){ //Each Champions information
 				if(championsPlayed.champions[champId].id == championList.data[champ].key) {//ID's are the same ==> same champ
@@ -22,9 +21,18 @@ module.exports = function(req, res){
 					});
 				}
 			}
-		}
 
-		res.json(championsPlayed);
+			
+		}
+		var arr=[];
+		Object.keys(championsPlayed.champions).sort(function(x, y){
+			return championsPlayed.champions[y].stats.totalSessionsPlayed -
+			 championsPlayed.champions[x].stats.totalSessionsPlayed;
+		}).forEach(function(key){
+			arr.push(championsPlayed.champions[key]);
+		})
+		console.log(arr);
+		res.render('champions', {title: 'Champions Played', champs:arr});
 
 	});
 
