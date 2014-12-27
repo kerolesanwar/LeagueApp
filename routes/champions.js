@@ -13,12 +13,12 @@ module.exports = function(req, res){
 
 	request(url.format(options), function(err, resp, body){
 		championsPlayed = JSON.parse(body); //Ranked Statistics by Champion (Wins, kills, Damage Dealt, etc)
-		
+		console.log(championsPlayed);
 		for(champId in championsPlayed.champions){ //User's stats with each champion
 			for(champ in championList.data){ //Each Champions information
 				if(championsPlayed.champions[champId].id == championList.data[champ].key) {//ID's are the same ==> same champ
 					Object.keys(championList.data[champ]).forEach(function(key){
-						championsPlayed.champions[champId][key]=championList.data[champ][key]; //Append Champ Info to users championsPlayed
+						championsPlayed.champions[champId].stats[key]=championList.data[champ][key]; //Append Champ Info to users championsPlayed
 					});
 				}
 			}
