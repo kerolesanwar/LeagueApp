@@ -6,3 +6,97 @@ body {
 a {
   color: #00B7FF;
 }
+
+.runePage{
+ position:relative;
+ width:656px;
+ height:436px;
+ background: url("https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png");
+}
+
+.rune1{
+  position:absolute;
+  top:439px;
+  left:26px;
+  zoom:85%;
+}
+.rune2{
+  position:absolute;
+  top:439px;
+  left:98px;
+  zoom:85%;
+}
+.rune3{
+  position:absolute;
+  top:442px;
+  left:184px;
+  zoom:85%;
+}
+
+.rune4{
+  position:absolute;
+  top:373px;
+  left:9px;
+  zoom:85%;
+}
+
+.rune5{
+  position:absolute;
+  top:367.5px;
+  left:83px;
+  zoom:85%;
+}
+.rune6{
+  position:absolute;
+  top:385px;
+  left:148px;
+  zoom:85%;
+}
+.rune7{
+  position:absolute;
+  top:313px;
+  left:36px;
+  zoom:85%;
+}
+.rune8{
+  position:absolute;
+  top:317px;
+  left:131px;
+  zoom:85%;
+}
+.rune9{
+  position:absolute;
+  top:267px;
+  left:84px;
+  zoom:85%;
+}
+.rune10{
+  position:absolute;
+  top:215px;
+  left:41px;
+  zoom:85%;
+}
+.rune11{
+  position:absolute;
+  top:211px;
+  left:124px;
+  zoom:85%;
+}
+.rune12{
+  position:absolute;
+  top:157px;
+  left:77px;
+  zoom:85%;
+}
+.rune29{
+  position:absolute;
+  top:137px;
+  left:126px;
+  zoom:150%
+}
+.rune30{
+  position:absolute;
+  top:109px;
+  left:281px;
+  zoom:150%
+}

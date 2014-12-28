@@ -31,6 +31,6 @@ module.exports = function(req, res){
 			}
 		});
 
-		res.json(runes);
+		res.render('runes', {title: 'Runes', runes: runes});
 	});
 }

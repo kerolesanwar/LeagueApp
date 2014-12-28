@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+  ul.nav.nav-tabs
+   -tabCount=1;
+   each page in runes.pages
+    if page.current
+     li.active
+      a(href="#page" + tabCount, data-toggle="tab" aria-expanded="false")=page.name
+      -tabCount++
+    else
+     li
+      a(href="#page" + tabCount, data-toggle="tab" aria-expanded="false")=page.name
+      -tabCount++
+  .tab-content#myTabContent
+   -divCount=1
+   each page in runes.pages
+    if page.current
+     .tab-pane.fade.active.in(id="page" + divCount)
+      .runePage
+       each slot in page.slots
+        img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId)
+     -divCount++
+    else
+    .tab-pane.fade(id="page" + divCount)
+     .runePage
+      each slot in page.slots
+       img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId)
+     -divCount++
