@@ -21,13 +21,13 @@ block content
       .runePage
        if page.slots
         each slot in page.slots
-         img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId,  data-toggle="tooltip" data-placement="right" title=slot.name + ": " +  slot.description)
+         img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId,  data-toggle="tooltip" title=slot.name + ": " +  slot.description)
     else
     .tab-pane.fade(id="page" + divCount)
      .runePage
       if page.slots
        each slot in page.slots
-        img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId,  data-toggle="tooltip" data-placement="right" title=slot.name + ": " +  slot.description)
+        img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId,  data-toggle="tooltip" title=slot.name + ": " +  slot.description)
         
      -divCount++
 
