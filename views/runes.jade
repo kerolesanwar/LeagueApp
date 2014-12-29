@@ -19,12 +19,17 @@ block content
     if page.current
      .tab-pane.fade.active.in(id="page" + divCount)
       .runePage
-       each slot in page.slots
-        img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId)
-     -divCount++
+       if page.slots
+        each slot in page.slots
+         if slot.runeId
+          img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId,  data-toggle="tooltip" data-placement="right" title=slot.name + ": " +  slot.description)
+      -divCount++ 
     else
     .tab-pane.fade(id="page" + divCount)
      .runePage
-      each slot in page.slots
-       img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId)
+      if page.slots
+       each slot in page.slots
+        img(src="dragontail/4.21.5/img/rune/" + slot.image.full class="rune" + slot.runeSlotId,  data-toggle="tooltip" data-placement="right" title=slot.name + ": " +  slot.description)
+        
      -divCount++
+  .button(type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right") ABc
