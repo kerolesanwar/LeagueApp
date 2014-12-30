@@ -5,4 +5,63 @@ block scripts
    console.log(!{JSON.stringify(masteryList)});
    console.log(!{JSON.stringify(masteries)});
 block content
-  h1= title
+   h1= title
+   ul.nav.nav-tabs
+    -tabCount=1;
+    each page in masteries.pages
+      if page.current
+       li.active
+        a(href="#page" + tabCount, data-toggle="tab" aria-expanded="false")=page.name
+        -tabCount++
+      else
+       li
+        a(href="#page" + tabCount, data-toggle="tab" aria-expanded="false")=page.name
+        -tabCount++
+   .tab-content#myTabContent
+     -divCount=1
+     each page in masteries.pages
+      if page.current
+       .tab-pane.fade.active.in(id="page" + divCount)
+        h1=page.name
+        table.table-bordered.table-striped
+         tr
+          th
+          th Tree
+          th Name
+          th Description
+          th Rank
+         each mastery in page.masteries
+          tr
+           td(width="10%")
+            img(src="dragontail/4.21.5/img/mastery/" + mastery.image.full width="100%")
+           td=mastery.tree
+           td=mastery.name
+           td #{mastery.description[0]} <br/>
+             | #{mastery.description[1]} <br/>
+             | #{mastery.description[2]} <br/>
+             | #{mastery.description[3]}
+           td=mastery.rank +"/"+ mastery.ranks
+      else
+      .tab-pane.fade(id="page" + divCount)
+        h1=page.name
+        table.table-bordered.table-striped
+         tr
+          th
+          th Tree
+          th Name
+          th Description
+          th Rank
+         each mastery in page.masteries
+          tr
+           td(width="10%")
+            img(src="dragontail/4.21.5/img/mastery/" + mastery.image.full width="100%")
+           td=mastery.tree
+           td=mastery.name
+           td #{mastery.description[0]} <br/>
+             | #{mastery.description[1]} <br/>
+             | #{mastery.description[2]} <br/>
+             | #{mastery.description[3]}
+           td=mastery.rank +"/"+ mastery.ranks
+
+       -divCount++     
+
