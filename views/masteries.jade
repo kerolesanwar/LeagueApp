@@ -30,17 +30,18 @@ block content
           th Name
           th Description
           th Rank
-         each mastery in page.masteries
-          tr
-           td(width="10%")
-            img(src="dragontail/4.21.5/img/mastery/" + mastery.image.full width="100%")
-           td=mastery.tree
-           td=mastery.name
-           td #{mastery.description[0]} <br/>
-             | #{mastery.description[1]} <br/>
-             | #{mastery.description[2]} <br/>
-             | #{mastery.description[3]}
-           td=mastery.rank +"/"+ mastery.ranks
+         if page.masteries
+           each mastery in page.masteries
+            tr
+             td(width="10%")
+              img(src="dragontail/4.21.5/img/mastery/" + mastery.image.full width="100%")
+             td=mastery.tree
+             td=mastery.name
+             td #{mastery.description[0]} <br/>
+               | #{mastery.description[1]} <br/>
+               | #{mastery.description[2]} <br/>
+               | #{mastery.description[3]}
+             td=mastery.rank +"/"+ mastery.ranks
       else
       .tab-pane.fade(id="page" + divCount)
         h1=page.name
@@ -51,17 +52,18 @@ block content
           th Name
           th Description
           th Rank
-         each mastery in page.masteries
-          tr
-           td(width="10%")
-            img(src="dragontail/4.21.5/img/mastery/" + mastery.image.full width="100%")
-           td=mastery.tree
-           td=mastery.name
-           td #{mastery.description[0]} <br/>
-             | #{mastery.description[1]} <br/>
-             | #{mastery.description[2]} <br/>
-             | #{mastery.description[3]}
-           td=mastery.rank +"/"+ mastery.ranks
+         if page.masteries
+           each mastery in page.masteries
+            tr
+             td(width="10%")
+              img(src="dragontail/4.21.5/img/mastery/" + mastery.image.full width="100%")
+             td=mastery.tree
+             td=mastery.name
+             td #{mastery.description[0]} <br/>
+               | #{mastery.description[1]} <br/>
+               | #{mastery.description[2]} <br/>
+               | #{mastery.description[3]}
+             td=mastery.rank +"/"+ mastery.ranks
 
-       -divCount++     
+         -divCount++     
 
