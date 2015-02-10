@@ -31,7 +31,18 @@ module.exports = function(req, res){
 				}
 			}
 		}
-		res.render('currentGame', {title: "Current Game", game: currentGame});
+		spectateLink = '"C:\\Riot Games\\League of Legends\\RADS\\solutions\\lol_game_client_sln\\releases\\0.0.1.74\\deploy\\League of Legends.exe" "8394" "LoLLauncher.exe" "" "spectator 192.64.174.163:80 ' +
+		currentGame.observers.encryptionKey + ' ' + currentGame.gameId + ' ' + ' NA1"';
+
+		fs.writeFile('spectate.bat', spectateLink, function(err){
+			if(err) return console.log(err);
+			console.log('File Created!');
+		})
+		res.setHeader('Content-disposition', 'attachment; filename=spectate.bat');
+		res.setHeader('Content-type', 'text/plain');
+		res.charset = 'UTF-8';
+		
+		res.render('currentGame', {title: "Current Game", game: currentGame, link: spectateLink});
 	});
 
 };
