@@ -5,38 +5,30 @@ block scripts
    console.log(!{JSON.stringify(games)});
 block content
   h1= title
-  each game in games
-   table.table-bordered.table-striped
-    tr
-     th Player
-     th Champion(ID)
-     th Summoner Spells (ID)
-     th K/D/A
-     th Items
-     //-count=0;
-     each player, count in game.participantIdentities
-      tr
-       if(player.player)
-        td=player.player.summonerName
+  each game in games.games
+    .list-group
+     a.list-group-item
+      h4.list-group-item-heading Champion
+      p.list-group-item-text
+        img(src="/dragontail/4.21.5/img/champion/" + game.image.full)
+     a.list-group-item
+      h4.list-group-item-heading Result
+      p.list-group-item-text
+       if(game.stats.win==true)
+        p.text-success Victory
        else
-        td Unknown Player
-       td=game.participants[count].championId
-       td=game.participants[count].spell1Id + " & " + game.participants[count].spell2Id 
-       td=game.participants[count].stats.kills + " / " + game.participants[count].stats.deaths + "/ " +  game.participants[count].stats.assists
-       td(width="50%")
-        if game.participants[count].stats.item0 
-         img(src="dragontail/4.21.5/img/item/" + game.participants[count].stats.item0 + ".png")
-        if game.participants[count].stats.item1 
-         img(src="dragontail/4.21.5/img/item/" + game.participants[count].stats.item1 + ".png")
-        if game.participants[count].stats.item2 
-         img(src="dragontail/4.21.5/img/item/" + game.participants[count].stats.item2+ ".png")
-        if game.participants[count].stats.item3 
-         img(src="dragontail/4.21.5/img/item/" + game.participants[count].stats.item3 + ".png")
-        if game.participants[count].stats.item4 
-         img(src="dragontail/4.21.5/img/item/" + game.participants[count].stats.item4 + ".png")
-        if game.participants[count].stats.item5
-         img(src="dragontail/4.21.5/img/item/" + game.participants[count].stats.item5 + ".png")
-        if game.participants[count].stats.item6
-         img(src="dragontail/4.21.5/img/item/" + game.participants[count].stats.item6 + ".png")         
-       each 
-      //-count++;
+        p.text-danger Defeat
+      p.list-group-item-text=game.stats.totalDamageDealt
+     a.list-group-item
+      h4.list-group-item-heading K/D/A
+      p.list-group-item-text
+       =(game.stats.championsKilled==undefined ? 0:game.stats.championsKilled)+ "/" + (game.stats.numDeaths==undefined ? 0 : game.stats.numDeaths)+ "/" + (game.stats.assists==undefined ? 0 : game.stats.assists)
+     a.list-group-item
+      h4.list-group-item-heading Total Damage Dealt
+      p.list-group-item-text=game.stats.totalDamageDealt
+     a.list-group-item
+      h4.list-group-item-heading Total Damage Taken
+      p.list-group-item-text=game.stats.totalDamageTaken
+     a.list-group-item
+      h4.list-group-item-heading Total Damage Healed
+      p.list-group-item-text=game.stats.totalHeal

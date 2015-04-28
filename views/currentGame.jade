@@ -2,38 +2,43 @@ extends layout
 
 block content
   h1= title
-  h2 Link To Spectate Game:
-  p=link
-  table.table-bordered.table-striped.table-responsive
-   tr.text-center
-    th Champion
-    th Player Name
-    th Summoner Spells
-   each player in game.participants
-    if(player.teamId==100)
-     tr.text-center
-      td
-       img(src="/dragontail/4.21.5/img/champion/" + player.champ + ".png")
-      td 
-       a(href="/search?username=" + player.summonerName)
-        =player.summonerName
-      td
-       img(src="/dragontail/4.21.5/img/spell/" + player.spell1 + ".png")
-       img(src="/dragontail/4.21.5/img/spell/" + player.spell2 + ".png")
-
-  table.table-bordered.table-striped.table-responsive
-   tr.text-center
-    th Champion
-    th Player Name
-    th Summoner Spells
-   each player in game.participants
-    if(player.teamId==200)
-     tr.text-center
-      td
-       img(src="/dragontail/4.21.5/img/champion/" + player.champ + ".png")
-      td 
-       a(href="/search?username=" + player.summonerName)
-        =player.summonerName
-      td
-       img(src="/dragontail/4.21.5/img/spell/" + player.spell1 + ".png")
-       img(src="/dragontail/4.21.5/img/spell/" + player.spell2 + ".png")
+  if(fail) 
+    p=fail
+  else
+    h2 Link To Spectate Game:
+    p=link
+    .row
+      .col-md-6
+        table.table-bordered.table-striped.table-responsive
+         tr.text-center
+          th Champion
+          th Player Name
+          th Summoner Spells
+         each player in game.participants
+          if(player.teamId==100)
+           tr.text-center
+            td
+             img(src="/dragontail/4.21.5/img/champion/" + player.champ + ".png")
+            td 
+             a(href="/search?username=" + player.summonerName)
+              =player.summonerName
+            td
+             img(src="/dragontail/4.21.5/img/spell/" + player.spell1 + ".png")
+             img(src="/dragontail/4.21.5/img/spell/" + player.spell2 + ".png")
+      .col-md-6      
+        table.table-bordered.table-striped.table-responsive
+         tr.text-center
+          th Champion
+          th Player Name
+          th Summoner Spells
+         each player in game.participants
+          if(player.teamId==200)
+           tr.text-center
+            td
+             img(src="/dragontail/4.21.5/img/champion/" + player.champ + ".png")
+            td 
+             a(href="/search?username=" + player.summonerName)
+              =player.summonerName
+            td
+             img(src="/dragontail/4.21.5/img/spell/" + player.spell1 + ".png")
+             img(src="/dragontail/4.21.5/img/spell/" + player.spell2 + ".png")

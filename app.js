@@ -13,9 +13,12 @@ var runes = require('./routes/runes');
 var masteries = require('./routes/masteries');
 var recentGames = require('./routes/recentGames');
 var currentGame = require('./routes/currentGame');
-
+var mongoose = require('mongoose');
+var fs = require('fs');
+var Summoners = require('./models/summoners');
 var app = express();
 
+mongoose.connect('mongodb://localhost/test');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -39,6 +42,20 @@ app.use('/masteries', masteries);
 app.use('/recent', recentGames);
 app.use('/current', currentGame);
 
+app.use(function(req, res, next) {
+  req.headers['if-none-match'] = 'no-match-for-this';
+  next();    
+});
+app.get('/summoners', function(req, res){
+   Summoners.find(function(err, summoners){
+       res.send(summoners);
+   });
+});
+app.get('/summoners/:username', function(req, res){
+   Summoners.find({username: req.params.username}, function(err, summoners){
+       res.send(summoners);
+   });
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
